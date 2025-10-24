@@ -1,0 +1,8 @@
+Bu klasöre aşağıdaki resimler eklenmelidir:
+
+1. covrex-cover-1.jpg - Covrex örtü örneği (1920x1080px)
+2. covrex-cover-2.jpg - Covrex örtü örneği (1920x1080px)
+3. covrex-automatic.jpg - Otomatik örtü sistemi (1920x1080px)
+4. covrex-solar.jpg - Güneş enerjili örtü (1920x1080px)
+
+Resimler Covrex teknolojisini ve otomatik örtü sistemlerini göstermelidir.

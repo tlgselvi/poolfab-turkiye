@@ -1,0 +1,26 @@
+<div class="text-center apikey-container" ng-init="W.current.state = 'apikey'">
+    <div class="text-center" style="max-width:300px;display:inline-block">
+        <div>
+            <a ng-href="https://yeloni.com/yeloni-api-key?site_id={{SS.setup().id}}&website={{domain()}}" target="_blank"><b>Click
+                    here to
+                    Generate your API Key</b></a>
+        </div>
+
+        <div>
+            Enter the Generated Key
+        </div>
+
+        <input type="text" class="form-control" placeholder="API Key" ng-model="apikey">
+
+        <div>
+            <button class="btn btn-primary" ng-click="submitCode(apikey)">Submit</button>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .apikey-container div {
+        margin-top: 20px
+    }
+</style>

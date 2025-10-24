@@ -1,0 +1,302 @@
+<div class="container" ng-hide="R.readyToSave">
+    <div class="col-md-11 yel-premium-features-on-list yel-no-left" id="yel-popup-feedback-inpage" ng-show="yelShowFeedback()">
+        <div class="yel-popup-feedback-inpage">
+            <small class="yel-popup-feedback-inpage-close" ng-click="hide_inpage_popup_feedback(feedback)"><i class="fa fa-close"></i></small>
+            <div>
+                <b><span class="glyphicon glyphicon-thumbs-up"></span> Congratulations on setting up your first
+                    Widget</b><br>
+
+                <span>If your Popup doesn't work as expected, <a href="https://yeloni.com/support" target="_blank"><b>please
+                            let us
+                            know here.</b></a></span>
+            </div>
+            <div class="popup-feedback-questions"></div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="row">
+                <!--List of Widgets with buttons-->
+                <div class="col-md-12">
+                    <div class="panel panel-default " style="margin-top:20px" ng-init="state = {}">
+                        <div class="panel-heading panel-white">
+                            <div class="pull-left">
+                                <h5>Your Widgets</h5>
+                            </div>
+
+                            <div class="pull-right">
+                                <h5>{{S.setup().subscriberCount.count}} Contacts Received</h5>
+                            </div>
+
+                            <div style="clear:both"></div>
+                        </div>
+                        <div class="panel-body" style="padding:0px">
+                            <table class="table">
+                                <tbody>
+                                    <tr ng-repeat="widget in list.widgets track by $index" style="padding-left:20px;">
+                                        <td style="width:20px;">
+                                            <i class="fa fa-circle" ng-class="{'green':(widget.configuration.what.enable),'gray':(!widget.configuration.what.enable)}"></i>
+                                        </td>
+                                        <td>{{widget.configuration.what.title}}</td>
+
+                                        <td class="action-panel">
+                                            <!-- <div ng-show="isEmailTheme($index)" class="pull-right"> <i class="fa fa-envelope"></i></div> -->
+                                            <!-- <span class="pull-right" ng-show="widget.configuration.what.enable">Active</span>
+                                            <span class="pull-right" ng-hide="widget.configuration.what.enable">Inactive</span> -->
+                                            <div class="pull-right">
+                                                <a class="btn btn-xs btn-default" ng-click="emailListModal($index)"><i
+                                                        class="fa fa-envelope"></i>
+                                                    Contacts</a>
+                                                <a class="btn btn-xs btn-default" ng-href="#/edit/build/design?index={{$index}}"><i
+                                                        class="fa fa-edit"></i>
+                                                    Edit</a>
+                                                <button class="btn btn-xs btn-default" ng-click="configure($index)"><i
+                                                        class="fa fa-gear"></i>
+                                                    Configure</button>
+                                                <button class="btn btn-xs btn-default" ng-show="widget.configuration.what.enable"
+                                                    ng-click="(widget.configuration.what.enable = !widget.configuration.what.enable);changeEnable(widget.configuration.what.enable, widget.configuration.what.name)">
+                                                    <i class="fa fa-toggle-on"></i> Disable
+                                                </button>
+                                                <button class="btn btn-xs btn-default" ng-hide="widget.configuration.what.enable"
+                                                    ng-click="(widget.configuration.what.enable = !widget.configuration.what.enable);changeEnable(widget.configuration.what.enable, widget.configuration.what.name)">
+                                                    <i class="fa fa-toggle-off"></i> Enable
+                                                </button>
+                                                <button class="btn btn-xs btn-default" ng-click="removeWidget($index)"><i
+                                                        class="fa fa-trash"></i>
+                                                    Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:20px;">
+                                            <i class="fa fa-plus"></i>
+                                        </td>
+                                        <td>
+                                            <a class="btn-link" style="cursor:pointer" ng-click="addNewWidget()">Add a
+                                                Widget</a>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr ng-show="S.extensionCount()== 0">
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" ng-model="license" placeholder="Enter Licence Key to Unlock Business Mode">
+                                                <span class="input-group-addon" ng-click="activate(license,'premiumSubscription')"
+                                                    style="cursor: pointer">
+                                                    <span ng-hide="activationInProgress">Activate</span>
+                                                    <span ng-show="activationInProgress"><i class="fa fa-spinner fa-spin"></i></span>
+                                                </span>
+                                            </div>
+                                            <div class="alert alert-danger" ng-show="!activationInProgress && activationFailed">
+                                                <strong>Oops!</strong> {{activationError}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr ng-show="S.extensionCount() > 0">
+                                        <td style="width:20px;">
+                                            <i class="fa fa-star" style="color:gold"></i>
+                                        </td>
+                                        <td>
+                                            <span ng-show="S.hasFeature('premiumSubscription')">All Premium
+                                                Features
+                                                Activated</span>
+                                            <span ng-hide="S.hasFeature('premiumSubscription')">Activated Addons:
+                                            </span>
+
+                                            <span class="btn btn-xs btn-default disabled" ng-repeat="(key,duration) in S.setup().extensions"
+                                                ng-init="x = FS[key]({}, {});">{{x.upgrade.replace(' addon','')}}</span>
+                                        </td>
+                                        <td>
+
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--Endorsements-->
+                <div class="col-md-12">
+                    <div class="" style="margin-top:20px">
+                        <div class="panel panel-default">
+                            <div class="panel-heading panel-white"><i class="fa fa-comment"></i> What our Business
+                                Users
+                                Say</div>
+                            <div class="panel panel-body" style="padding:0px">
+                                <div class="list-group">
+                                    <div class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-md-2" style="padding:5px">
+                                                <img class="img-circle" width="60px" height="auto" src="../../../../../../../res.cloudinary.com/yeloni-com/image/upload/v1546413104/joe-howard-yeloni.gif" />
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p>
+
+                                                    We increased our email conversion rate by 184% with Yeloni. If you
+                                                    need
+                                                    help collecting email addresses or driving hesitant visitors to a
+                                                    specific
+                                                    page of your website, look no further.
+                                                </p>
+                                                <i>Joe Howard - Founder & CEO, WPBuffs</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-md-2" style="padding:5px">
+                                                <img class="img-circle" width="60px" height="auto" src="../../../../../../../res.cloudinary.com/yeloni-com/image/upload/v1546413099/gregory-santore.gif" />
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p>
+                                                    Thanks to the intuitive setup and management of the pops and the
+                                                    Yeloni
+                                                    team’s incredibly fast and personal support, we’ve been able to
+                                                    grow
+                                                    our
+                                                    subscriber lists across multiple verticals. Simply the best out
+                                                    there.
+                                                    Bar
+                                                    none.
+                                                </p>
+                                                <i>
+                                                    Gregory Santore - Founder & CEO, Ghost Rhino Marketing Inc
+                                                </i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-md-10" style="margin-left:93px">
+                                                <p>You should upgrade if</p>
+                                                <ul style="list-style-type:disc;margin-left:30px;font-size:13px;">
+                                                    <li>You sell a product or service</li>
+                                                    <li>You have some traffic, and want to improve Conversions</li>
+                                                    <li>You implement Email Marketing or Automation</li>
+                                                    <li>Your site gets a lot of Mobile users</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default" style="margin-top:20px">
+                        <div class="panel-heading panel-white">
+                            <!-- <div class="pull-left">
+                                <h5><i class="fa fa-lock"></i> Unlock Business Mode</h5>
+                            </div> -->
+                            <a class="btn btn-primary pull-left" target="_blank" href="https://yeloni.com/product/all-in-one-subscription/">
+                                <i class="fa fa-unlock"></i> Click here to Unlock Business Mode
+                            </a>
+
+                            <div style="clear:both">
+
+                            </div>
+
+                        </div>
+                        <div class="panel-body" style="padding:0px">
+                            <div class="list-group" style="margin-bottom:2px">
+                                <div class="list-group-item" ng-repeat="feature in R.features | orderBy:'priority'"
+                                    ng-init="status = FS[feature.label](widget, feature);" ng-show="status.enabled && feature.label!='premiumSubscription'">
+                                    <div class="row">
+                                        <div class="col-md-2" style="padding:5px">
+                                            <img style="margin-top: -15px;" width="100px" height="auto" ng-src="{{status.image}}" />
+                                        </div>
+                                        <div class="col-md-10">
+                                            <b>{{status.upgrade}}</b>
+                                            <p>
+                                                <small>{{status.description}}</small>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <small>We offer a 30 Day Moneyback
+                                        Guarantee</small>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<style>
+    .panel-white {
+        background-color: white !important;
+        border-bottom: none;
+    }
+
+    .sharp {
+        border-radius: 0px !important;
+    }
+
+    .activate {
+        margin-top: -75px;
+        margin-left: 54px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 0px;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .no-border {
+        border: none !important;
+        border-bottom: 1px solid white !important;
+        outline: none !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+    }
+
+    .activated {
+        border: 2px solid green !important;
+    }
+
+    .green {
+        color: green
+    }
+
+    .gray {
+        color: lightgray;
+    }
+
+    .action-panel .btn-default {
+        border-style: dashed;
+    }
+
+    .action-panel .btn-default:hover {
+        border-style: solid;
+        color: black;
+    }
+</style>

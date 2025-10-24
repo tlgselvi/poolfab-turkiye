@@ -1,0 +1,67 @@
+<div class="panel panel-default sharp" ng-repeat="(key,group) in addonGroups">
+    <div class="panel-heading sharp panel-white">
+        <div class="pull-left">
+            <b>{{group.title}} </b>
+            <!-- &nbsp;starting <b>{{group.annual}}$</b> a month -->
+        </div>
+        <div class="pull-left">
+
+        </div>
+
+
+        <!-- <button class="btn btn-xs btn-default pull-right">{{group.monthly}}$/m
+            <br>(paid monthly)</button>
+        <button class="btn btn-xs btn-default pull-right" style="margin-right:15px">{{group.annual}}$/m
+            <br>(paid annually)</button> -->
+
+        <div style="clear:both"></div>
+    </div>
+    <div class="panel-body" style="padding-top:5px">
+        <div class="col-md-6" style="padding:5px;margin-bottom:-10px;margin-top:10px" ng-repeat="feature in R.features | orderBy:'priority'"
+            ng-init="status = FS[feature.label](widget, feature);" ng-show="addonShow(key,feature.label) && status.enabled && !S.hasFeature(feature.label)">
+            <!-- <div class="panel panel-default">
+                <div class="panel-heading panel-white sharp">
+                    {{status.upgrade.replace("addon","")}}
+                </div>
+                <div class="panel-body">
+                    {{feature.description}}
+                </div>
+            </div> -->
+
+            <div class="panel panel-default no-border" style="margin-top:-20px;">
+                <a ng-href="{{status.url}}" target="_blank">
+                    <div class="panel-body no-border" style="padding:0px">
+                        <div class="pull-left">
+                            <img ng-src="{{status.image}}" height="60px" width="60px">
+                        </div>
+                        <div>
+                            <h5>{{status.upgrade.replace(' addon','')}}</h5>
+                        </div>
+                    </div>
+                </a>
+                <div class="panel-footer panel-white" style="padding:0px" ng-show="ext[feature.label].activating">
+                    <small>Click on the link above to purchase a License</small>
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="license" placeholder="Enter Licence Key">
+                        <span class="input-group-addon" ng-click="activate(license,feature.label)" style="cursor: pointer">
+                            <span ng-hide="ext[feature.label].activationInProgress">Activate</span>
+                            <span ng-show="ext[feature.label].activationInProgress"><i class="fa fa-spinner fa-spin"></i></span>
+                        </span>
+                    </div>
+                    <div class="alert alert-danger" ng-show="!ext[feature.label].activationInProgress && ext[feature.label].activationFailed">
+                        <strong>Oops!</strong> {{ext[feature.label].activationError}}
+                    </div>
+
+                </div>
+
+            </div>
+            <button ng-init="ext[feature.label].activating = false" ng-click="ext[feature.label].activating = true"
+                ng-hide="ext[feature.label].activating || S.hasFeature(feature.label)" class="btn btn-link btn-xs activate">Activate</button>
+
+            <button ng-show="S.hasFeature(feature.label)" class="btn btn-default btn-xs activate disabled"><i class="fa fa-check"></i>
+                Active</button>
+
+
+        </div>
+    </div>
+</div>

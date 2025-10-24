@@ -1,0 +1,8 @@
+Bu klasöre aşağıdaki resimler eklenmelidir:
+
+1. istanbul-showroom-1.jpg - İstanbul showroom iç mekan (1920x1080px)
+2. istanbul-showroom-2.jpg - İstanbul showroom havuz sergisi (1920x1080px)
+3. ankara-showroom-1.jpg - Ankara showroom iç mekan (1920x1080px)
+4. ankara-showroom-2.jpg - Ankara showroom ürün sergisi (1920x1080px)
+
+Resimler showroom'ların profesyonel ve modern görünümünü göstermelidir.

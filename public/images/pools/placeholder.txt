@@ -1,0 +1,10 @@
+Bu klasöre aşağıdaki resimler eklenmelidir:
+
+1. lpw-pool-1.jpg - LPW Havuz örneği (1920x1080px)
+2. lpw-pool-2.jpg - LPW Havuz örneği (1920x1080px)
+3. flexline-pool-1.jpg - Flexline Havuz örneği (1920x1080px)
+4. flexline-pool-2.jpg - Flexline Havuz örneği (1920x1080px)
+5. pool-installation.jpg - Havuz kurulum süreci (1920x1080px)
+6. pool-maintenance.jpg - Havuz bakım hizmeti (1920x1080px)
+
+Resimler yüksek kalitede, havuz odaklı ve profesyonel olmalıdır.

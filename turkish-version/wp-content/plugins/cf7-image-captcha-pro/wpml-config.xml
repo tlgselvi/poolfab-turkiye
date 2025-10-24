@@ -1,0 +1,8 @@
+<wpml-config>
+    <admin-texts>
+        <key name="text1" />
+        <key name="text2" />
+        <key name="error1" />
+        <key name="error2" />
+    </admin-texts>
+</wpml-config>

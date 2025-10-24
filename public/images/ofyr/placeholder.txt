@@ -1,0 +1,7 @@
+Bu klasöre aşağıdaki resimler eklenmelidir:
+
+1. ofyr-kitchen-1.jpg - OFYR mutfak örneği (1920x1080px)
+2. ofyr-kitchen-2.jpg - OFYR mutfak örneği (1920x1080px)
+3. ofyr-outdoor.jpg - Outdoor yaşam alanı (1920x1080px)
+
+Resimler OFYR outdoor kitchen çözümlerini ve premium outdoor yaşamı göstermelidir.

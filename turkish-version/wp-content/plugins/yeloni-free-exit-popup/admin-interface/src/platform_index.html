@@ -1,0 +1,76 @@
+<script>
+    var autience_initiated_at = Date.now()
+    console.log(autience_initiated_at);
+</script>
+<div id="yetience-loader" class="cssload-wraper">
+    <div class="cssload-dots"></div>
+</div>
+<div class="" ng-controller="MainController">
+    <div id="yetience-content" style="display:none">
+
+        <!-- <div class="yel-newuser-menubar" ng-hide="onStartPage()" id="yel-newuser-menubar" style="display:none">
+            <div class="menubar-title"><a href="#" id="yel-menubar-title">{{R.Y.title}} </a></div>
+
+            <div class="menubar-right-contents">
+
+                <div style="margin-right:100px;display:none" id="yel-premium-support">
+                    Got a question? Write to us on admin@yeloni.com
+                </div>
+                <div><a href="#" id="yel-menubar-widgets">Widgets</a></div>
+                <div id="yel-menubar-extensions" ng-click="viewExtensions(); C.createNewEvent('d_seen_premium_menubar')"
+                    style="text-decoration: underline;">Premium Extensions</div>
+                <div><a href="#/affiliate" id="yel-menubar-affiliate">Affiliates</a></div>
+                <div><a class="btn btn-primary" href="https://yeloni.com/support/" target="_blank"><i class="glyphicon glyphicon-headphones"></i>
+                        Support</a></div>
+            </div>
+            <div style="clear:both"></div>
+        </div> -->
+
+        <!--time bound offer yellow bar-->
+        <!-- <div class="yel-timebound-offer-wrapper" id="yel-timebound-offer-wrapper">
+            Save 50% when you upgrade in the next {{R.setupDateTime}}
+            <span class="yel-timer-hour" id="yel-timer-hour">11</span>hrs 
+            <span class="yel-timer-minute" id="yel-timer-minute">59</span>min
+        </div> -->
+
+        <div ui-view></div>
+        <div class="yel-support">
+            <a class="btn btn-primary" href="https://yeloni.com/support" target="_blank"><i class="fa fa-headphones"></i>
+                Need Help? Talk to Support</a>
+        </div>
+    </div>
+
+    <style>
+        .yel-support{
+            z-index:2;
+            right:0px;
+            bottom:50px;
+            position: fixed;
+        }
+    </style>
+
+
+    <!--script to run the timer for the time bound discount-->
+    <script type="text/javascript">
+        // var timerMin = document.getElementById("yel-timer-minute");
+        // var timerHour = document.getElementById("yel-timer-hour");
+        // var currentHour = 5;
+        // var currentMin = 5;
+        // var intervalTimer = setInterval(function() {
+        //     timerMin.innerHTML = currentMin;
+        //     currentMin = currentMin-1;
+
+        //     if(currentMin<0)
+        //     {
+        //         timerHour.innerHTML = currentHour;
+        //         currentHour = currentHour-1;
+        //         currentMin = 5;
+        //     }
+        //     if(currentHour<0)
+        //     {
+        //         clearInterval(intervalTimer);
+        //         document.getElementById("yel-timebound-offer-wrapper").style.display="none";
+        //     }
+        // }, 1000);
+    </script>
+</div>
