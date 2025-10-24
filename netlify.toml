@@ -1,15 +1,21 @@
 [build]
-  publish = "dist"
-  command = "pnpm build"
+  # Publish directory
+  publish = "turkish-version"
+  
+  # Build command (not needed for static site)
+  command = ""
 
 [build.environment]
-  NODE_VERSION = "20"
+  # Node.js version (if needed)
+  NODE_VERSION = "18"
 
+# Redirect rules
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/"
+  to = "/index_full.html"
   status = 200
 
+# Headers for better performance
 [[headers]]
   for = "/*"
   [headers.values]
@@ -18,7 +24,14 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Cache static assets
 [[headers]]
-  for = "/assets/*"
+  for = "/wp-content/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=31536000"
+
+# SEO headers
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
